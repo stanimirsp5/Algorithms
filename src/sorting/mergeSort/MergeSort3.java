@@ -34,6 +34,7 @@ public class MergeSort3 {
 
         for (int k = lo; k <= hi ; k++) {
             // handle ArrayIndexOutOfBoundsException
+
             if(less(aux[j],aux[i])){
                 aux[k] = aux[j++];
             }
