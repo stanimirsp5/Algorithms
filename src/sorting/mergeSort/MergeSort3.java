@@ -34,9 +34,17 @@ public class MergeSort3 {
 
         for (int k = lo; k <= hi ; k++) {
             // handle ArrayIndexOutOfBoundsException
-
-            if(less(aux[j],aux[i])){
-                aux[k] = aux[j++];
+            if(i > mid){  //last element
+                a[k] = aux[j++];
+            }
+            else if(j > hi){
+                a[k] = aux[i++];
+            }
+            else if(less(aux[j],aux[i])){
+                a[k] = aux[j++];
+            }
+            else {
+                a[k] = aux[i++];
             }
         }
     }
@@ -51,3 +59,20 @@ public class MergeSort3 {
         System.out.print(Arrays.toString(nums));
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,8 +10,9 @@ public class Main {
         //abstractInPlaceMerge.sort(nums);
         Mergesort2 ms2 = new Mergesort2();
         MergeSort3 ms3 = new MergeSort3();
-        //ms3.sort(numsArr);
+        MergeSort4 ms4 = new MergeSort4();
+        ms4.sort(numsArr);
         Merge merge = new Merge();
-        merge.merge();
+        //merge.merge();
     }
 }
