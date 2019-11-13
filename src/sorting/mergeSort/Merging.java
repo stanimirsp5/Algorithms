@@ -34,8 +34,8 @@ public class Merging {
         }
 
         for (int k = lo; k <= hi ; k++) {
-            if(i > mid) a[k] = aux[j++];                    // min index trespass middle   // left half exhausted (take from the right)
-            else if(j > hi) a[k] = aux[i++];                // if only one element lasted   // right half exhausted (take from the left)
+            if(i > mid) a[k] = aux[j++];                    // if first array is bypassed take from the other // min index trespass middle   // left half exhausted (take from the right)
+            else if(j > hi) a[k] = aux[i++];                // if first array is bypassed take from the other // right half exhausted (take from the left)
             else if(less(aux[j], aux[i])) a[k] = aux[j++];  // current key on right less than current key on left (take from the right)
             else a[k] = aux[i++];                           // no change, current num is smaller    // current key on right  greater than or equal to current key on left (take from the left)
         }

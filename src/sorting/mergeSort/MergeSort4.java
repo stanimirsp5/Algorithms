@@ -8,7 +8,17 @@ public class MergeSort4 {
 
     public void sort(int[] nums){
         aux = new int[nums.length];
-        sort(nums,0,nums.length-1);
+        System.out.print("end");
+
+        // bottom-up
+        int n = nums.length;
+        for (int len = 1; len < n ; len *= 2) {
+            for (int lo = 0; lo < n-len; lo += len+len) {
+                merge(nums, lo,lo+len-1,Math.min(lo+len+len-1, n-1));
+            }
+        }
+
+        //sort(nums,0,nums.length-1);
         System.out.print(Arrays.toString(nums));
     }
 
@@ -18,9 +28,12 @@ public class MergeSort4 {
 
         int mid = lo + (hi - lo) / 2;
 
-        sort(nums, 0, mid);
-        sort(nums, mid + 1, hi);
-        merge(nums, lo,mid,hi);
+
+
+        //recursion
+//        sort(nums, 0, mid);
+//        sort(nums, mid + 1, hi);
+//        merge(nums, lo,mid,hi);
     }
 
     private void merge(int[] nums, int lo, int mid, int hi){
