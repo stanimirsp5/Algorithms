@@ -2,11 +2,14 @@ package sorting.quickSort;
 
 import sorting.shuffle.Shuffle;
 
+import java.util.Arrays;
+
 public class QuickSort {
 
     public static void sort(int[] a){
-        Shuffle.shuffle(a);
+        //Shuffle.shuffle(a);
         sort(a, 0, a.length - 1);
+        System.out.println(Arrays.toString(a));
     }
 
     public static void sort(int[] a, int lo, int hi){
@@ -44,7 +47,16 @@ public class QuickSort {
     }
 
     private static void exchange(int[] a, int i, int j){
+        int t = a[i];
+        a[i] = a[j];
+        a[j] = t;
+//        int t = i;
+//        a[i] = a[j];
+//        a[j] = a[t];
 
+//        Comparable t = a[i];
+//        a[i] = a[j];
+//        a[j] = t;
     }
 
 }

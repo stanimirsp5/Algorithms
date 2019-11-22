@@ -8,7 +8,7 @@ public class Shuffle {
             int r = randomInt(n);
             exchange(nums, i, r);
         }
-        show(nums);
+       // show(nums);
     }
 
     private static void exchange(int[] nums, int i, int j){
