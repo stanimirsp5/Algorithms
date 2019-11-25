@@ -10,29 +10,12 @@ public class SortingPosition {
         Comparable k = items[0];
         int i = 0, j = items.length; // i searches for greater than pivot, j for smaller
         while (i <= j){ // until i ang j crosses
-
-            while(less(k, items[++i])){ // 5 < 6 true
-                //if() break;
-            }
-
-            while(less(k, items[--j])){
-
-
-            }
+            while(less(items[++i], k))
+            while(less(k, items[--j]))
+            if(i >= j) break;
             exchange(items, i,j);
-
-//            if(less(k, items[++i])){
-//               exchange(items, i,j);
-//            }
-//            if(less(k, items[--j])){
-//                if(){
-//                    exchange();
-//                }
-//            }
-
         }
         System.out.println(Arrays.toString(items));
-
     }
 
     private static boolean less(Comparable a, Comparable b){
