@@ -1,10 +1,12 @@
 package sorting.Heap;
 
 import java.security.Key;
+import java.util.Arrays;
+
 // PQ is maintained in a heap-ordered complete binary tree.
 public class HeapPriorityQueue<Key extends Comparable<Key>> {
 
-    private Key[] pq;
+    private Key[] pq = (Key[]) new Comparable[1];
     private int n = 0;
 
     public void MaxPQ(int maxN){
@@ -63,7 +65,7 @@ public class HeapPriorityQueue<Key extends Comparable<Key>> {
 
     private void resize(int capacity) {
         assert capacity > n;
-        Key[] temp = (Key[]) new Object[capacity];
+        Key[] temp = (Key[]) new Comparable[capacity];
         for (int i = 1; i <= n; i++) {
             temp[i] = pq[i];
         }
@@ -71,6 +73,6 @@ public class HeapPriorityQueue<Key extends Comparable<Key>> {
     }
 
     public void show(){
-        System.out.println(pq);
+        System.out.println(Arrays.toString(pq));
     }
 }

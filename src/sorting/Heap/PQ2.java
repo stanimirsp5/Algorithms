@@ -33,10 +33,12 @@ public class PQ2 {
     private void sink(){
         int k = 0;
         int n = pq.size()-1;
+        // moving down until both children are smaller or equal
+        // or until reach the bottom
         while (2*k <= n){
             int j = 2*k;
             if(j < n && less(j, j+1)) j++;
-            if(!less(k,j)) break;
+            if(!less(k,j)) break; // until both children are smaller or equal
             exch(k,j);
             k = j;
         }

@@ -1,4 +1,5 @@
-package sorting.Heap;
+package sorting.Heapsort;
+
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
@@ -10,20 +11,7 @@ public class Main {
         Comparable[] items = {"z","y","h","i","a","w"};
         int[] nums2 = {10,6,4,7,2,1,3,8,9,10,6,4,7,2,1,3,8,9};
 
-        //HeapPriorityQueue pq = new HeapPriorityQueue();
-        PQ2 pq = new PQ2();
-        //pq.insert("Z");
-//        pq.insert("A");
-//        pq.insert("B");
-//        pq.insert("qwe");
-        pq.insert(5);
-        pq.insert(43);
-        pq.insert(1);
-        pq.insert(897);
-        pq.insert(8);
-        pq.show();
-        //pq.deleteMax();
-        pq.show();
-
+        Heapsort hs = new Heapsort();
+        hs.sort(nums);
     }
 }
