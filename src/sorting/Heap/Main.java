@@ -16,12 +16,18 @@ public class Main {
 //        pq.insert("A");
 //        pq.insert("B");
 //        pq.insert("qwe");
-        pq.insert(5);
-        pq.insert(43);
-        pq.insert(1);
-        pq.insert(897);
-        pq.insert(8);
-        pq.show();
+//        pq.insert(5);
+//        pq.insert(43);
+//        pq.insert(1);
+//        pq.insert(897);
+//        pq.insert(8);
+
+        pq.insert(-6);
+        pq.insert(544);
+        pq.insert(6);
+        pq.insert(11);
+        pq.insert(2);
+        pq.insert(56);
         //pq.deleteMax();
         pq.show();
 
