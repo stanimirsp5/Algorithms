@@ -19,9 +19,8 @@ public class CustomNode<Key, Value>  {
         first = new Node(key, val, first);
     }
     public void show(){
-//        for (int i = 0; i < first; i++) {
-//
-//        }
-        System.out.println(first.next);
+        for (Node x = first; x != null; x = x.next) {
+            System.out.println(x.val);
+        }
     }
 }
