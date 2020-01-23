@@ -11,6 +11,7 @@ public class Main {
         bst2.put(14,54);
         bst2.put(3,12);
         bst2.put(5,32);
-        bst2.get(5);
+
+        System.out.println(bst2.max());
     }
 }

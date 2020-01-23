@@ -30,9 +30,9 @@ public class BST2<Key extends Comparable<Key>, Value> {
         if (first == null) {
             return new Node(key, val, 1);
         }
-        if(first.key.compareTo(key) < 0){ // left
+        if(first.key.compareTo(key) > 0){ // left
             first.left = put(key, val, first.left);
-        } else if(first.key.compareTo(key) > 0){ // right
+        } else if(first.key.compareTo(key) < 0){ // right
             first.right = put(key, val, first.right);
         } else{ // == 0
            first.val = val;
@@ -64,14 +64,38 @@ public class BST2<Key extends Comparable<Key>, Value> {
         if(node == null) return 0;
         else return node.n;
     }
-//    public void show(){
-//        show(root, (Key)1);
-//    }
-//    private void show(Node x, Key key) {
-//        if(x.key.compareTo(key) < 0){ // left
-//            put(key, val, first.left);
-//        } else if(first.key.compareTo(key) > 0){ // right
-//            put(key, val, first.right);
-//        }
-//    }
+    public Key min(){
+        Key k = min(root);
+        return k;
+    }
+    private Key min(Node node){
+        if(node.left == null) return node.key;
+        return min(node.left);
+    }
+
+    public Key max(){
+        Key k = max(root);
+        return k;
+    }
+    private Key max(Node node){
+        if(node.right == null) return node.key;
+        return max(node.right);
+    }
+
+    public Key floor(Key key){
+        return floor(root,key);
+    }
+
+    private Key floor(Node node, Key key){
+        if(node == null) return null;
+        int comp = node.key.compareTo(key); // 3 < 5 => -1
+        if(comp == 0) return node.key;
+        if(comp < 0){ // left
+            return floor(node.left,key);
+        }
+
+        Node t =  floor(node.right, key);
+        if(t != null) return t;
+        else return node;
+    }
 }
