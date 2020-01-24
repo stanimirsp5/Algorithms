@@ -12,6 +12,7 @@ public class Main {
         bst2.put(3,12);
         bst2.put(5,32);
 
-        System.out.println(bst2.max());
+       // System.out.println(bst2.max());
+        System.out.println(bst2.floor(15));
     }
 }

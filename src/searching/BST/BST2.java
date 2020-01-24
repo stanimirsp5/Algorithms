@@ -83,17 +83,17 @@ public class BST2<Key extends Comparable<Key>, Value> {
     }
 
     public Key floor(Key key){
-        return floor(root,key);
+        Node node = floor(root,key);
+        return node.key;
     }
 
-    private Key floor(Node node, Key key){
+    private Node floor(Node node, Key key){
         if(node == null) return null;
-        int comp = node.key.compareTo(key); // 3 < 5 => -1
-        if(comp == 0) return node.key;
+        int comp = key.compareTo(node.key); // 3 < 5 => -1
+        if(comp == 0) return node;
         if(comp < 0){ // left
             return floor(node.left,key);
         }
-
         Node t =  floor(node.right, key);
         if(t != null) return t;
         else return node;

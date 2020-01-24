@@ -70,6 +70,39 @@ public class BST<Key extends Comparable<Key>, Value> {
         if(x == null) return 0;
         else return x.n;
     }
+    public Key floor(Key key){
+        Node node = floor(root,key);
+        return node.key;
+    }
+
+    private Node floor(Node node, Key key){
+        if(node == null) return null;
+        int comp = key.compareTo(node.key); // 3 < 5 => -1
+        if(comp == 0) return node;
+        if(comp < 0){ // left
+            return floor(node.left,key);
+        }
+        Node t =  floor(node.right, key);
+        if(t != null) return t;
+        else return node;
+    }
+
+    public Key ceiling(Key key){
+        Node node = ceiling(root,key);
+        return node.key;
+    }
+
+    private Node ceiling(Node node, Key key){
+        if(node == null) return null;
+        int comp = key.compareTo(node.key);
+        if(comp == 0) return node;
+        if(comp < 0){ // left
+            return ceiling(node.right,key);
+        }
+        Node t =  ceiling(node.left, key);
+        if(t != null) return t;
+        else return node;
+    }
 
     public void show(){
         show(root);
