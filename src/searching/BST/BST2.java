@@ -98,4 +98,18 @@ public class BST2<Key extends Comparable<Key>, Value> {
         if(t != null) return t;
         else return node;
     }
+
+    public Key deleteMin(){
+       Node node = deleteMin(root);
+       return node.key;
+    }
+    private Node deleteMin(Node node){
+        Node nodeToDel = null;
+            if(node.left == null) {
+                nodeToDel = node;// new Node(node.key, node.val, node.n);
+                node = null;
+            }
+           deleteMin(node.left);
+            return nodeToDel;
+    }
 }
