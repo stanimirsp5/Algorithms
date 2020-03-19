@@ -2,6 +2,8 @@ package searching.RedBlackBST;
 
 import com.sun.jdi.Value;
 
+import java.util.EmptyStackException;
+
 public class RedBlack <Key extends Comparable<Key>, Value>{
 
     private Node root;
@@ -25,28 +27,56 @@ public class RedBlack <Key extends Comparable<Key>, Value>{
         if(x == null) return false;
         return x.color == RED;
     }
+    public int size() {
+        return size(root);
+    }
     private int size(Node x){
         if(x == null) return 0;
         return x.n;
     }
-    private Node rotateLeft(Node h){
-        Node x = h.right;
-        h.right = x.left;
-        x.left = h;
-        x.color = h.color;
-        h.color = RED;
-        x.n = h.n;
-        h.n = 1 + size(h.left) + size(h.right);
-        return x;
-    }
-    private Node rotateRight(Node h){
+
+//    private Node rotateLeft(Node h){
+//        Node x = h.right;
+//        h.right = x.left;
+//        x.left = h;
+//        x.color = h.color;
+//        h.color = RED;
+//        x.n = h.n;
+//        h.n = 1 + size(h.left) + size(h.right);
+//        return x;
+//    }
+//    private Node rotateRight(Node h){
+//        Node x = h.left;
+//        h.left = x.right;
+//        x.right = h;
+//        x.color = h.color;
+//        h.color = RED;
+//        x.n = h.n;
+//        h.n = 1 + size(h.left) + size(h.right);
+//        return x;
+//    }
+    private Node rotateRight(Node h) {
+        // assert (h != null) && isRed(h.left);
         Node x = h.left;
         h.left = x.right;
         x.right = h;
-        x.color = h.color;
-        h.color = RED;
+        x.color = x.right.color;
+        x.right.color = RED;
         x.n = h.n;
-        h.n = 1 + size(h.left) + size(h.right);
+        h.n = size(h.left) + size(h.right) + 1;
+        return x;
+    }
+
+    // make a right-leaning link lean to the left
+    private Node rotateLeft(Node h) {
+        // assert (h != null) && isRed(h.right);
+        Node x = h.right;
+        h.right = x.left;
+        x.left = h;
+        x.color = x.left.color;
+        x.left.color = RED;
+        x.n = h.n;
+        h.n = size(h.left) + size(h.right) + 1;
         return x;
     }
     private void flipColors(Node h){
@@ -73,5 +103,22 @@ public class RedBlack <Key extends Comparable<Key>, Value>{
 
         h.n = size(h.left) + size(h.right) + 1;
         return h;
+    }
+
+    public Key get(Key key){
+       Node node = get(root, key);
+       return node.key;
+    }
+    private Node get(Node node, Key key){
+        if(root == null) return node;
+        int comp = node.key.compareTo(key);
+        // 1 bigger // -1 smaller // 0 equal
+        if(comp > 0){
+           return get(node.right, key);
+        }else if(comp < 0){
+            return get(node.left, key);
+        }else{
+            return node;
+        }
     }
 }
