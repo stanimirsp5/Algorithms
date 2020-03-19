@@ -12,7 +12,7 @@ public class Heap {
     }
     public void delMax(){
         exchange(0,nums.length-1);
-        int[] yourArray = Arrays.copyOfRange(nums, 0, nums.length-1);
+        nums = Arrays.copyOfRange(nums, 0, nums.length-1);
         sink(0);
     }
     private void swim(int k){
@@ -23,7 +23,20 @@ public class Heap {
         }
     }
     private void sink(int k){
-
+        //        while(true){
+        //            if(less(nums[0],nums[2*k-1])){
+        //                exchange(nums[0],nums[2*k-1]);
+        //                break;
+        //            }
+        //        }
+        int n = nums.length-1;
+        while (2*k <= n){
+            int j = 2*k;
+            if(j < n && less(j, j+1)) j++; // two childs compare
+            if(!less(k,j)) break;   // compare bigger child with 'parent'
+            exchange(k,j);
+            k = j;
+        }
     }
     private boolean less(int parentPosition, int lastAddedNum){
         return nums[parentPosition] < nums[lastAddedNum];
@@ -49,7 +62,6 @@ public class Heap {
         }
         nums = newArr;
     }
-
     public void show(){
         for (int i = 0; i < nums.length; i++) {
             System.out.print(nums[i] + " ");

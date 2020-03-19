@@ -1,7 +1,5 @@
 package sorting.mergeSort;
 
-import org.jetbrains.annotations.Contract;
-
 import java.util.Arrays;
 
 public class MergeSort3 {
@@ -49,7 +47,6 @@ public class MergeSort3 {
         }
     }
 
-    @Contract(pure = true)
     private static boolean less(int a, int b){
         return a < b;
     }
