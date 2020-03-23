@@ -1,4 +1,4 @@
-package graphs;
+package graphs.example;
 
 /******************************************************************************
  *  Compilation:  javac Graph.java
@@ -36,7 +36,10 @@ package graphs;
  *
  ******************************************************************************/
 
+import searching.RedBlackBST.StdOut;
+
 import java.util.NoSuchElementException;
+import java.util.Stack;
 
 /**
  *  The {@code Graph} class represents an undirected graph of vertices
@@ -248,10 +251,10 @@ public class Graph {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) {
-        In in = new In(args[0]);
-        Graph G = new Graph(in);
-        StdOut.println(G);
-    }
+//    public static void main(String[] args) {
+//        In in = new In(args[0]);
+//        Graph G = new Graph(in);
+//        StdOut.println(G);
+//    }
 
 }

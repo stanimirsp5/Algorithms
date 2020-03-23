@@ -1,18 +1,16 @@
-package graphs;
+package graphs.example;
 
-//import graphs.example.Graph;
-//import graphs.example.In;
 
 import searching.RedBlackBST.StdOut;
 
 import java.io.FileNotFoundException;
-//import graphs.example.In;
 
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         String pathName = "G:\\Documents\\Projects\\Algorithms\\src\\sources\\tinyG.txt";
         In in = new In(pathName);
+       // in
         Graph g = new Graph(in);
 //        StdOut.println(g);
         printG(g);
