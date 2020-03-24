@@ -1,6 +1,6 @@
 package graphs;
 
-import graphs.example.Bag;
+import simpleDS.Bag;
 
 import java.io.DataInputStream;
 import java.io.FileInputStream;
@@ -43,8 +43,8 @@ public class Graph {
         E++;
     }
 
-    public Iterable<Integer> adj(int v){
-        return adj[v];
-    }
+//    public Iterable<Integer> adj(int v){
+//        return adj[v];
+//    }
 
 }
