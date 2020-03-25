@@ -1,13 +1,7 @@
 package graphs;
-
+import searching.RedBlackBST.StdOut;
 import simpleDS.Bag;
-
-import java.io.DataInputStream;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
-
-//import graphs.example.In;
 
 public class Graph {
     private int V; // number of vertices
@@ -22,7 +16,7 @@ public class Graph {
         }
     }
 
-    public Graph(In in) throws FileNotFoundException {
+    public Graph(In in){
         this(in.readInt()); // read V and construct this graph
         int E = in.readInt();
         for (int i = 0; i < E; i++) {
@@ -42,9 +36,38 @@ public class Graph {
         adj[w].add(v); // Add v to w's list
         E++;
     }
-
-//    public Iterable<Integer> adj(int v){
+    // return vertices adjacent to vertex v
+   // public Iterable<Integer> adj(int v){
 //        return adj[v];
 //    }
 
+
+    public void printG(){
+
+        for (int i = 0; i < adj.length; i++) {
+            System.out.println("vertex " + i + " edges: " );
+            adj[i].print();
+        }
+
+    }
+
+//    public String toString(){
+//        String s = V + " vertices, " + E + " edges\n";
+//        for (int v = 0; v < V; v++) {
+//            s += v + ": ";
+//            for (int w : this.adj(v)) {
+//                s += w + " ";
+//            }
+//            s += "\n";
+//        }
+//        return s;
+//    }
+
+//    public static void printG(Graph g){
+//        for (int v = 0; v < g.V(); v++) {
+//            for (int w: g.adj(v) ) {
+//                StdOut.println(v + "-" + w);
+//            }
+//        }
+//    }
 }

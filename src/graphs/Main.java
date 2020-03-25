@@ -11,19 +11,16 @@ import java.io.FileNotFoundException;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
-        String pathName = "G:\\Documents\\Projects\\Algorithms\\src\\sources\\tinyG.txt";
+        //String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\teenyWeenyG.txt";
+        String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\teenyWeenyG.txt";
         In in = new In(pathName);
         Graph g = new Graph(in);
-//        StdOut.println(g);
-        printG(g);
-    }
 
-    public static void printG(Graph g){
-        for (int v = 0; v < g.V(); v++) {
-            for (int w: g.adj(v) ) {
-                StdOut.println(v + "-" + w);
-            }
-        }
+//        Graph g2 = new Graph(5);
+//        g2.addEdge(4,1);
+//        g2.addEdge(4,3);
+//        g2.addEdge(2,0);
+//        g2.addEdge(1,0);
+        g.printG();
     }
-
 }
