@@ -26,5 +26,4 @@ public class Graph2 {
             adj[i].print();
         }
     }
-
 }
