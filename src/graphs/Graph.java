@@ -32,6 +32,7 @@ public class Graph {
     public int E(){return E;}
 
     public void addEdge(int v, int w){
+        // each edge appears twice in the data structure
         adj[v].add(w); // Add w to v's list
         adj[w].add(v); // Add v to w's list
         E++;
