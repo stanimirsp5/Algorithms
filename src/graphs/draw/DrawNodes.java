@@ -29,6 +29,7 @@ public class DrawNodes extends JPanel
         ImageIcon iIcon = new ImageIcon(bImage);
         label.setIcon(iIcon);
         frame.add(label);
+        frame.setSize(600, 600);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         g2d = drawNode(1,1,g2d);
