@@ -1,51 +1,59 @@
 package graphs.draw;
 
+import simpleDS.Bag;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Line2D;
+import java.awt.geom.*;
+import java.util.HashMap;
+import java.util.Random;
 
 public class DrawGraph extends JPanel {
-
+    Bag[] adj;
+    public DrawGraph(Bag[] args) {
+        this.adj = args;
+    }
     @Override
-    public void paintComponent(Graphics g) {
-        // Draw Tree Here
-        g.drawOval(5, 5, 10, 10);
-        g.drawOval(44, 33, 10, 10);
+    public void paint(Graphics g){ // method used to create all graphics on the screen
+        super.paint(g);
+        draw(g);
     }
-
-    public static void main(String[] args) {
-        JFrame jFrame = new JFrame();
-        jFrame.add(new DrawGraph());
-        jFrame.setSize(500, 500);
-        jFrame.setVisible(true);
+    public void draw(Graphics g) {
+        int[][] graph = {{0}, {1, 2}, {1}, {0, 4}, {2}, {0}, {3}, {4}, {4}, {3, 1}};
+        int test = adj.length;
+        int numberOfVertices = adj.length;
+        HashMap<Integer, Integer[]> verticesCoordinates = new HashMap<Integer, Integer[]>();
+        for (int i = 0; i < numberOfVertices; i++) {
+           // System.out.println("vertex " + i + " edge ");
+            //adj[i].print();
+            drawVertex(g, verticesCoordinates, i);
+        }
+//        for (int i = 0; i < numberOfVertices; i++) {
+//            drawVertex(g, verticesCoordinates, i);
+//        }
+        
+        for (int i = 0; i < numberOfVertices; i++) {
+            for (int j = 1; j < graph[i].length; j += 2) {
+                drawEdges(g, verticesCoordinates, i, graph[i][j]);
+            }
+        }
     }
+    public void drawVertex(Graphics g, HashMap<Integer, Integer[]> verticesCoordinates, int i){
+        Random rand = new Random();
+        int x = rand.nextInt(550);
+        int y = rand.nextInt(550);
+        verticesCoordinates.put(i, new Integer[]{x, y});
+        g.drawOval(x, y, 10, 10);
 
+        g.drawString(Integer.toString(i),x,y);
+    }
+    public void drawEdges(Graphics g, HashMap<Integer, Integer[]> verticesCoordinates, int fromVertex, int toVertex){
+        Graphics2D g2 = (Graphics2D) g;
+        int x1 = verticesCoordinates.get(fromVertex)[0];
+        int y1 = verticesCoordinates.get(fromVertex)[1];
+
+        int x2 = verticesCoordinates.get(toVertex)[0];
+        int y2 = verticesCoordinates.get(toVertex)[1];
+        g2.draw(new Line2D.Double(x1, y1, x2, y2));
+    }
 }
-
-//public class DrawGraph extends JComponent {
-//    @Override
-//    public void paint(Graphics g) {
-//        // Draw a simple line using the Graphics2D draw() method.
-//        Graphics2D g2 = (Graphics2D) g;
-//        g2.setStroke(new BasicStroke(2f));
-//        g2.setColor(Color.RED);
-//        g2.draw(new Line2D.Double(50, 150, 250, 350));
-//        g2.setColor(Color.GREEN);
-//        g2.draw(new Line2D.Double(250, 350, 350, 250));
-//        g2.setColor(Color.BLUE);
-//        g2.draw(new Line2D.Double(350, 250, 150, 50));
-//        g2.setColor(Color.YELLOW);
-//        g2.draw(new Line2D.Double(150, 50, 50, 150));
-//        g2.setColor(Color.BLACK);
-//        g2.draw(new Line2D.Double(0, 0, 400, 400));
-//    }
-//
-//    public static void main(String[] args) {
-//        JFrame frame = new JFrame("Draw Line");
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.getContentPane().add(new DrawGraph());
-//        frame.pack();
-//        frame.setSize(new Dimension(420, 440));
-//        frame.setVisible(true);
-//    }
-//}

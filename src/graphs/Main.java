@@ -3,8 +3,12 @@ package graphs;
 //import graphs.example.Graph;
 //import graphs.example.In;
 
+import graphs.draw.DrawGraph;
+import graphs.draw.MainDraw;
 import searching.RedBlackBST.StdOut;
+import simpleDS.Bag;
 
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -22,13 +26,18 @@ public class Main {
 //        In in = new In(pathName);
 //        Graph g = new Graph(in);
 
-        Graph g2 = new Graph(5);
+        Graph2 g2 = new Graph2(5);
         //Graph2 g2 = new Graph2(5);
         g2.addEdge(4,1);
         g2.addEdge(4,3);
         g2.addEdge(2,0);
         g2.addEdge(1,0);
-        g2.printG();
+        //g2.printG();
+        Bag[] bag = g2.getList();
+        call(bag);
+    }
+    public static void call(Bag[] bag){
+        MainDraw.main(bag);
     }
 }
 

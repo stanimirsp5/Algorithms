@@ -1,4 +1,4 @@
-package graphs.draw;
+package graphs.draw.drawings;
 import javax.swing.*;
 import java.awt.*;
 

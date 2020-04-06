@@ -1,5 +1,6 @@
 package graphs;
 
+import graphs.draw.DrawGraph;
 import simpleDS.Bag;
 
 public class Graph2 {
@@ -18,6 +19,9 @@ public class Graph2 {
     public void addEdge(int v, int w){
         adj[v].add(w);
         adj[w].add(v);
+    }
+    public Bag[] getList(){
+        return adj;
     }
 
     public void printG(){

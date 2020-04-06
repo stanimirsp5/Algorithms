@@ -1,8 +1,9 @@
-package graphs.draw;
+package graphs.draw.drawings;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.*;
+import java.util.HashMap;
 import java.util.Random;
 
 public class Java2D extends JPanel{
@@ -28,53 +29,37 @@ public class Java2D extends JPanel{
 //
 //        g2.draw(polyline);
 //    }
-    public void drawVertex(Graphics g, int[] verticesCoordinates, int i){
+    public void drawVertex(Graphics g, HashMap<Integer, Integer[]> verticesCoordinates, int i){
         Random rand = new Random();
-        int x = rand.nextInt(600);
-        int y = rand.nextInt(600);
-        verticesCoordinates[i] = x;
-        verticesCoordinates[i+1] = y;
-        // https://stackoverflow.com/questions/26785759/javascript-like-object-data-type-in-java
-//       obj = 1 { x:
-//                y:
-//            }
-//        Object myobj = new Object() {
-//           int success = 1,
-//           int success2 = 2,
-//        }
+        int x = rand.nextInt(550);
+        int y = rand.nextInt(550);
+        verticesCoordinates.put(i, new Integer[]{x, y});
        g.drawOval(x, y, 10, 10);
+
+       g.drawString(Integer.toString(i),x,y);
     } 
-    public void drawEdges(Graphics g, int[] verticesCoordinates, int i){
+    public void drawEdges(Graphics g, HashMap<Integer, Integer[]> verticesCoordinates, int fromVertex, int toVertex){
         Graphics2D g2 = (Graphics2D) g;
-        int x1 = verticesCoordinates[i];
-        int y1 = verticesCoordinates[i];
-        g2.draw(new Line2D.Double(x1, y1, 20, 20));
+        int x1 = verticesCoordinates.get(fromVertex)[0];
+        int y1 = verticesCoordinates.get(fromVertex)[1];
+
+        int x2 = verticesCoordinates.get(toVertex)[0];
+        int y2 = verticesCoordinates.get(toVertex)[1];
+        g2.draw(new Line2D.Double(x1, y1, x2, y2));
     }
     public void drawPolyline(Graphics g){
         int[][] graph = {{0}, {1,2}, {1},{0,4},{2},{0},{3},{4},{4},{3,1}};
-        
-        int numberOfVertices = graph.length;
-        int[] verticesCoordinates = new int[]{numberOfVertices};
-
+        int numberOfVertices = graph.length/2;
+        HashMap<Integer, Integer[]> verticesCoordinates = new HashMap<Integer, Integer[]>();
         for (int i = 0; i < numberOfVertices; i++) {
             drawVertex(g,verticesCoordinates, i);
         }
         
         for (int i = 0; i < numberOfVertices; i++) {
-            for (int j = 1; j < graph[i].length; j+=1) {
-                drawEdges(g,verticesCoordinates, i);
+            for (int j = 1; j < graph[i].length; j+=2) {
+                drawEdges(g,verticesCoordinates, i, graph[i][j]);
             }
         }
-
-
-
-
-
-
-
-
-
-
 
 
 //        int x2Points[] = {20, 50, 300, 150, 200};
@@ -144,7 +129,7 @@ public class Java2D extends JPanel{
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(new Java2D());
         frame.pack();
-        frame.setSize(600, 600);
+        frame.setSize(620, 620);
         frame.setVisible(true);
     }
 
