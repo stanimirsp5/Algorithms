@@ -38,12 +38,20 @@ public class Graph {
         E++;
     }
     // return vertices adjacent to vertex v
-   // public Iterable<Integer> adj(int v){
-//        return adj[v];
-//    }
+    public Iterable<Integer> adj(int v){
+        return adj[v];
+    }
     public Bag[] getList(){
         return adj;
     }
+
+    public static int degree(Graph G, int v){ // compute the degree of vertex
+        int degree = 0;
+        for (int w: G.adj(v-1) )degree++;
+        return degree;
+    }
+
+
 
     public void printG(){
         for (int i = 0; i < adj.length; i++) {
@@ -52,6 +60,17 @@ public class Graph {
         }
 
     }
+    public static void main(String[] args) throws FileNotFoundException {
+        String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\teenyWeenyG.txt";//Mac //teenyWeenyG,tinyG,mediumG
+        In in = new In(pathName);
+        Graph g = new Graph(in);
+        System.out.println(degree(g,g.V));
+        g.printG();
+    }
+}
+
+
+
 
 //    public String toString(){
 //        String s = V + " vertices, " + E + " edges\n";
@@ -72,4 +91,3 @@ public class Graph {
 //            }
 //        }
 //    }
-}
