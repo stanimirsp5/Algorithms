@@ -41,10 +41,11 @@ public class Graph {
    // public Iterable<Integer> adj(int v){
 //        return adj[v];
 //    }
-
+    public Bag[] getList(){
+        return adj;
+    }
 
     public void printG(){
-
         for (int i = 0; i < adj.length; i++) {
             System.out.println("vertex " + i + " edges: " );
             adj[i].print();

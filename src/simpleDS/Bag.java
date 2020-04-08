@@ -32,5 +32,18 @@ public class Bag<Item>{
             node = node.next;
         }
     }
-
+    public int[] getConnectedVertices(){
+        Node node = first;
+        int[] connectedVertices = new int[size];
+        int i =0;
+        while (true){
+            connectedVertices[i] =Integer.parseInt(node.item.toString()); // attempting to cast an Object to an int
+            if(!hasNext(node)){
+                break;
+            }
+            node = node.next;
+            i++;
+        }
+        return connectedVertices;
+    }
 }

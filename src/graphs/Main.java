@@ -22,18 +22,18 @@ public class Main {
         //List list = new ArrayList();
 
         //String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\teenyWeenyG.txt";//PC
-//        String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/teenyWeenyG.txt";//Mac
-//        In in = new In(pathName);
-//        Graph g = new Graph(in);
+        String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/tinyG.txt";//Mac //teenyWeenyG,tinyG,mediumG
+        In in = new In(pathName);
+        Graph2 g = new Graph2(in);
 
-        Graph2 g2 = new Graph2(5);
-        //Graph2 g2 = new Graph2(5);
-        g2.addEdge(4,1);
-        g2.addEdge(4,3);
-        g2.addEdge(2,0);
-        g2.addEdge(1,0);
+//        Graph2 g2 = new Graph2(5);
+//        g2.addEdge(4,1);
+//        g2.addEdge(4,3);
+//        g2.addEdge(2,0);
+//        g2.addEdge(1,0);
         //g2.printG();
-        Bag[] bag = g2.getList();
+
+        Bag[] bag = g.getList();
         call(bag);
     }
     public static void call(Bag[] bag){

@@ -19,25 +19,20 @@ public class DrawGraph extends JPanel {
         draw(g);
     }
     public void draw(Graphics g) {
-        int[][] graph = {{0}, {1, 2}, {1}, {0, 4}, {2}, {0}, {3}, {4}, {4}, {3, 1}};
-        int test = adj.length;
         int numberOfVertices = adj.length;
         HashMap<Integer, Integer[]> verticesCoordinates = new HashMap<Integer, Integer[]>();
         for (int i = 0; i < numberOfVertices; i++) {
-           // System.out.println("vertex " + i + " edge ");
-            //adj[i].print();
             drawVertex(g, verticesCoordinates, i);
         }
-//        for (int i = 0; i < numberOfVertices; i++) {
-//            drawVertex(g, verticesCoordinates, i);
-//        }
-        
         for (int i = 0; i < numberOfVertices; i++) {
-            for (int j = 1; j < graph[i].length; j += 2) {
-                drawEdges(g, verticesCoordinates, i, graph[i][j]);
+            int[] connectedVertices = adj[i].getConnectedVertices();
+
+            for (int j = 0; j < connectedVertices.length; j++) {
+                drawEdges(g, verticesCoordinates, i, connectedVertices[j]);
             }
         }
     }
+
     public void drawVertex(Graphics g, HashMap<Integer, Integer[]> verticesCoordinates, int i){
         Random rand = new Random();
         int x = rand.nextInt(550);
