@@ -47,11 +47,35 @@ public class Graph {
 
     public static int degree(Graph G, int v){ // compute the degree of vertex
         int degree = 0;
-        for (int w: G.adj(v-1) )degree++;
+        for (int w: G.adj(v-1) ){
+          degree++;
+        }
         return degree;
     }
 
+    public static int maxDegree(Graph G){ // compute maximum degree
+        int max = 0;
+        for (int v = 0; v < G.V(); v++) {
+            if (degree(G,v) > max){
+                max = degree(G,v);
+            }
+        }
+        return max;
+    }
 
+    public static double averageDegree(Graph G){
+        return 2.0 * G.E() / G.V();
+    }
+
+     public static int selfLoop(Graph G){
+        int count = 0;
+        for (int v = 0; v < G.V(); v++) {
+            for (int w: G.adj(v)) {
+                if(v == w) count++;
+            }
+        }
+        return count/2; // each edge counted twice
+     }
 
     public void printG(){
         for (int i = 0; i < adj.length; i++) {
@@ -64,8 +88,10 @@ public class Graph {
         String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\teenyWeenyG.txt";//Mac //teenyWeenyG,tinyG,mediumG
         In in = new In(pathName);
         Graph g = new Graph(in);
-        System.out.println(degree(g,g.V));
-        g.printG();
+        //System.out.println("dg "+degree(g,g.V));
+        //System.out.println("av dg "+averageDegree(g));
+        System.out.println("self loops  "+selfLoop(g));
+      //  g.printG();
     }
 }
 

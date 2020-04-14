@@ -42,6 +42,45 @@ public class Graph2 {
             adj[i].print();
         }
     }
+    // return vertices adjacent to vertex v
+    public Iterable<Integer> adj(int v){
+        return adj[v];
+    }
+
+
+    public static int degree(Graph2 G, int v){ // compute the degree of vertex
+        int degree = 0;
+        for (int w: G.adj(v) ){
+            degree++;
+        }
+        return degree;
+    }
+
+    public static int maxDegree(Graph2 G){ // compute the degree of vertex
+//        int currDegree = 0;
+        int degree=0, currDegree = 0;
+        for (int i = 0; i < G.V-1 ; i++) {
+            for(int w : G.adj(i)){
+                currDegree++;
+            }
+            degree = degree > currDegree ? degree : currDegree;
+            currDegree=0;
+        }
+
+        return degree;
+    }
+
+
+    public static int selfLoop(Graph2 G){
+      int count = 0;
+        for (int v = 0; v < G.V; v++) {
+            for (int w : G.adj(v)) {
+                if(v == w) count++;
+            }
+        }
+        return count/2;
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\teenyWeenyG.txt";//Mac //teenyWeenyG,tinyG,mediumG
         In in = new In(pathName);
@@ -52,5 +91,9 @@ public class Graph2 {
 //        g2.addEdge(2,0);
 //        g2.addEdge(1,0);
         g.printG();
+//        System.out.println("dg "+degree(g,0));
+//        System.out.println("dg "+maxDegree(g));
+        System.out.println("self loops  "+selfLoop(g));
+
     }
 }
