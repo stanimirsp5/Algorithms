@@ -1,6 +1,6 @@
 package simpleDS;
 
-import org.jetbrains.annotations.NotNull;
+//import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
 
@@ -52,7 +52,7 @@ public class Bag<Item> implements Iterable<Item>{
         return connectedVertices;
     }
 
-    @NotNull // p.155 from the book
+    //@NotNull // p.155 from the book
     @Override
     public Iterator<Item> iterator() {
         return new ListIterator();
