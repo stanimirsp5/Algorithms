@@ -34,7 +34,7 @@ public class DepthFirstSearch {
         String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/verySmallG.txt";//Mac //tinyPathG,teenyWeenyG,tinyG,mediumG,verySmallG
         In in = new In(pathName);
         Graph G = new Graph(in);
-        int s = 1;
+        int s = 0;
         DepthFirstSearch search = new DepthFirstSearch(G, s);
         for (int v = 0; v < G.V(); v++) {
             if (search.marked(v))
