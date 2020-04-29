@@ -5,7 +5,7 @@ import graphs.In;
 
 import java.io.FileNotFoundException;
 
-public class DepthFirstSerachPaths2 {
+public class DepthFirstSerach2 {
     boolean[] marked;
     int count;
 
@@ -30,7 +30,7 @@ public class DepthFirstSerachPaths2 {
         In in = new In(pathName);
         Graph G = new Graph(in);
 
-        DepthFirstSerachPaths2 serachPaths = new DepthFirstSerachPaths2();
+        DepthFirstSerach2 serachPaths = new DepthFirstSerach2();
         serachPaths.findPaths(G,1);
         if(serachPaths.count != G.V()) {
             System.out.println("not connected");

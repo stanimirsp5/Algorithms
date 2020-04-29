@@ -1,5 +1,6 @@
 //depth-first search is a recursive method for systematically examining each of the vertices and edges in a graph
 //determine whether there exists a path between two given vertices
+// ** depth-first search is a recursive method for searching a connected graph **
 package graphs.DFS;
 import graphs.Graph;
 import graphs.In;
@@ -18,6 +19,7 @@ public class DepthFirstSearch {
         marked[v] = true;
         count++;
         for(int w : G.adj(v)){
+            StdOut.println(w);
             if(!marked[w]){
                 dfs(G,w);
             }
@@ -31,7 +33,8 @@ public class DepthFirstSearch {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/verySmallG.txt";//Mac //tinyPathG,teenyWeenyG,tinyG,mediumG,verySmallG
+        //String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/verySmallG.txt";//Mac //tinyPathG,teenyWeenyG,tinyG,mediumG,verySmallG
+        String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\verySmallG.txt";//PC work //tinyPathG,teenyWeenyG,tinyG,mediumG,verySmallG
         In in = new In(pathName);
         Graph G = new Graph(in);
         int s = 0;
@@ -40,9 +43,6 @@ public class DepthFirstSearch {
             if (search.marked(v))
                 StdOut.print(v + " ");
         }
-
-        StdOut.println();
-        //G.printG();
         StdOut.println();
         if (search.count() != G.V()) StdOut.println("NOT connected");
         else                         StdOut.println("connected");

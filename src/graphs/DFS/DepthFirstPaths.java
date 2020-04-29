@@ -6,6 +6,7 @@ import graphs.In;
 import searching.RedBlackBST.StdOut;
 
 import java.io.FileNotFoundException;
+import java.util.Iterator;
 import java.util.Stack;
 
 public class DepthFirstPaths {
@@ -41,6 +42,7 @@ public class DepthFirstPaths {
 
     public Iterable<Integer> pathTo(int v){ // path from s to v; null if no such path
         if(!hasPathTo(v)) return null;
+//        Stack<Integer> path = new Stack<Integer>();
         Stack<Integer> path = new Stack<Integer>();
         for (int x = v; x != s; x = edgeTo[x]) {
             path.push(x);
@@ -49,23 +51,42 @@ public class DepthFirstPaths {
         return path;
     }
     public static void main(String[] args) throws FileNotFoundException {
-//        String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\teenyWeenyG.txt";//PC //teenyWeenyG,tinyG,mediumG
-        String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/tinyPathG.txt";//Mac //teenyWeenyG,tinyG,mediumG
+        String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\tinyPathG.txt";//PC //teenyWeenyG,tinyG,mediumG,tinyPathG
+        //String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/tinyPathG.txt";//Mac //teenyWeenyG,tinyG,mediumG
 
         In in = new In(pathName);
         Graph G = new Graph(in);
         int s = 0;
-        DepthFirstPaths dfs = new DepthFirstPaths(G,s);
+        DepthFirstPaths dfs = new DepthFirstPaths(G,s); // computes paths from s to each vertex connected to s
         for (int v = 0; v < G.V(); v++) {
             System.out.print(s + " to " + v + ": ");
-            if(dfs.hasPathTo(v)){
-                for(int x : dfs.pathTo(v)){
-                    if(x == s){
-                        System.out.print(x);
+            if(dfs.hasPathTo(v)){ // iterate through the vertices on a path from s to any vertex connected to s
+                Stack<Integer> path = (Stack<Integer>) dfs.pathTo(v);
+                Iterator<Integer> iter = path.iterator();
+                while (iter.hasNext()){
+                    int num = iter.next();
+                   // System.out.println(num);
+                    if(num == s){
+                        System.out.print(num);
                     }else{
-                        System.out.print("-"+ x);
+                        System.out.print("-"+ num);
                     }
                 }
+//                for(int i = 0; i < path.size(); i++)
+//                {
+//                    if(path[i] == s){
+//                        System.out.print(x);
+//                    }else{
+//                        System.out.print("-"+ x);
+//                    }
+//                }
+//                for(int x : path){
+//                    if(x == s){
+//                        System.out.print(x);
+//                    }else{
+//                        System.out.print("-"+ x);
+//                    }
+//                }
             }
             System.out.println();
         }
