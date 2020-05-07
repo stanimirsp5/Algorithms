@@ -52,7 +52,7 @@ public class DepthFirstPaths {
         return path;
     }
     public static void main(String[] args) throws FileNotFoundException {
-        String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\tinyPathG.txt";//PC //teenyWeenyG,tinyG,mediumG,tinyPathG
+        String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\verySmallG.txt";//PC //teenyWeenyG,tinyG,mediumG,tinyPathG,verySmallG
         //String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/tinyPathG.txt";//Mac //teenyWeenyG,tinyG,mediumG
 
         In in = new In(pathName);
@@ -62,8 +62,8 @@ public class DepthFirstPaths {
 
         for (int v = 0; v < G.V(); v++) {
             System.out.print(s + " to " + v + ": ");
-            if(dfs.hasPathTo(v)){ // iterate through the vertices on a path from s to any vertex connected to s
-                for(int x : dfs.pathTo(v)){
+            if(dfs.hasPathTo(v)){
+                for(int x : dfs.pathTo(v)){ // iterate through the vertices on a path from s to any vertex connected to s
                     if(x == s){
                         System.out.print(x);
                     }else{
