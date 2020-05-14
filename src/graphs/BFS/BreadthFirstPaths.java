@@ -42,11 +42,27 @@ public class BreadthFirstPaths {
 //    public Iterable<Integer> pathTo(int v){
 //
 //    }
-
+static int getResult(boolean... vars) {
+    int count = 0;
+    for (boolean var : vars) {
+        count += (var ? 1 : 0);
+    }
+    return count;
+}
     public static void main(String[] args) throws FileNotFoundException {
         String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\teenyWeenyG.txt";//Mac //teenyWeenyG,tinyG,mediumG
         In in = new In(pathName);
-        Graph g = new Graph(in);
+        Graph G = new Graph(in);
+        int s = 0;
+        BreadthFirstPaths bfp = new BreadthFirstPaths(G,s);
+
+        int markedVertecies = getResult(bfp.marked);
+        if(markedVertecies == G.V()){
+            System.out.println("CONNECTED");
+        }else{
+            System.out.println("Not connected");
+        }
+
     }
 
 }
