@@ -4,8 +4,7 @@ import graphs.Graph;
 import graphs.In;
 
 import java.io.FileNotFoundException;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class BreadthFirstPaths {
     private boolean[] marked; // Is a shortest path to this vertex known?
@@ -39,9 +38,20 @@ public class BreadthFirstPaths {
     public boolean hasPathTo(int v){
         return marked[v];
     }
-//    public Iterable<Integer> pathTo(int v){
-//
-//    }
+    public Iterable<Integer> pathTo(int v){
+        Deque<Integer> path = new ArrayDeque<>();
+
+        if(!hasPathTo(v)) return null;
+
+            for (int w = v; w != s ; w = edgeTo[v]) {
+                path.add(w);
+            }
+            path.add(s);
+
+
+        return path;
+
+    }
 static int getResult(boolean... vars) {
     int count = 0;
     for (boolean var : vars) {
@@ -50,19 +60,27 @@ static int getResult(boolean... vars) {
     return count;
 }
     public static void main(String[] args) throws FileNotFoundException {
-        String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\teenyWeenyG.txt";//Mac //teenyWeenyG,tinyG,mediumG
+        String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\verySmallG.txt";//Mac //teenyWeenyG,tinyG,mediumG,verySmallG
         In in = new In(pathName);
         Graph G = new Graph(in);
         int s = 0;
-        BreadthFirstPaths bfp = new BreadthFirstPaths(G,s);
+        BreadthFirstPaths bfp = new BreadthFirstPaths(G, s);
 
         int markedVertecies = getResult(bfp.marked);
-        if(markedVertecies == G.V()){
+        if (markedVertecies == G.V()) {
             System.out.println("CONNECTED");
-        }else{
+        } else {
             System.out.println("Not connected");
         }
-
+        for (int v = 0; v < G.V() ; v++) {
+            System.out.print(s + " to " + v + ": ");
+            if(bfp.hasPathTo(v)) {
+                for (int path : bfp.pathTo(v)) {
+                    if((path == s)) System.out.print(path);
+                    else System.out.print( " - "+path);
+                }
+            }
+            System.out.println();
+        }
     }
-
 }
