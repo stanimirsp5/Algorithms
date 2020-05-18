@@ -4,6 +4,7 @@ import graphs.Graph;
 import graphs.In;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -40,28 +41,35 @@ public class BreadthFirstPaths2 {
         return marked[v];
     }
 
-    public Deque<Integer> pathTo(Graph G, int v){
+    public Deque<Integer> pathTo(int v){
         if (!hasPathTo(v)) return null;
-        Deque<Integer> paths = new LinkedList<>();
+        Deque<Integer> paths = new ArrayDeque<>();
         for (int w = v; w != s; w = pathTo[w]) { // TODO diff between s and v
-            paths.add(w);
+            paths.push(w);
         }
-        paths.add(v);
+        paths.push(s);
         return paths;
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\verySmallG.txt";//Mac //teenyWeenyG,tinyG,mediumG,verySmallG
+        //String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\verySmallG.txt";//Mac //teenyWeenyG,tinyG,mediumG,verySmallG
+        String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/verySmallG.txt";//Mac //teenyWeenyG,tinyG,mediumG,verySmallG
         In in = new In(pathName);
         Graph G = new Graph(in);
         int s = 0;
         BreadthFirstPaths2 bfp = new BreadthFirstPaths2(G,s);
         for (int v = 0; v < G.V(); v++) {
-            System.out.print(s + " : " +v);
-            for (int w : bfp.pathTo(G, v)) {
-                System.out.print(" - " +w);
+            System.out.print(s + " to " + v + ": ");
+            if(bfp.hasPathTo(v)) {
+                for (int w : bfp.pathTo(v)) {
+                    if (s == w) {
+                        System.out.print(w);
+                    } else {
+                        System.out.print(" - " + w);
+                    }
+                }
             }
+            System.out.println();
         }
-        System.out.println();
     }
 }

@@ -43,10 +43,10 @@ public class BreadthFirstPaths {
 
         if(!hasPathTo(v)) return null;
 
-            for (int w = v; w != s ; w = edgeTo[v]) {
-                path.add(w);
+            for (int w = v; w != s ; w = edgeTo[w]) {
+                path.push(w);
             }
-            path.add(s);
+            path.push(s);
 
 
         return path;
@@ -60,7 +60,9 @@ static int getResult(boolean... vars) {
     return count;
 }
     public static void main(String[] args) throws FileNotFoundException {
-        String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\verySmallG.txt";//Mac //teenyWeenyG,tinyG,mediumG,verySmallG
+        //String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\verySmallG.txt";//Mac //teenyWeenyG,tinyG,mediumG,verySmallG
+        String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/verySmallG.txt";//Mac //teenyWeenyG,tinyG,mediumG,verySmallG
+
         In in = new In(pathName);
         Graph G = new Graph(in);
         int s = 0;
@@ -72,6 +74,8 @@ static int getResult(boolean... vars) {
         } else {
             System.out.println("Not connected");
         }
+
+        // all possible paths
         for (int v = 0; v < G.V() ; v++) {
             System.out.print(s + " to " + v + ": ");
             if(bfp.hasPathTo(v)) {
@@ -82,5 +86,14 @@ static int getResult(boolean... vars) {
             }
             System.out.println();
         }
+
+        // single path
+//        int v = 3;
+//        System.out.print(s + " to " + v + ": ");
+//        for (int path : bfp.pathTo(v)) {
+//            if((path == s)) System.out.print(path);
+//            else System.out.print( " - "+path);
+//        }
+//        System.out.println();
     }
 }
