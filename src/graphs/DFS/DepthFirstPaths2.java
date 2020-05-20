@@ -47,8 +47,8 @@ public class DepthFirstPaths2 {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        //String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\verySmallG.txt";//PC //teenyWeenyG,tinyG,mediumG,tinyPathG,verySmallG
-        String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/verySmallG.txt";//Mac //tinyPathG,teenyWeenyG,tinyG,mediumG,verySmallG
+        String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\verySmallG.txt";//PC //teenyWeenyG,tinyG,mediumG,tinyPathG,verySmallG
+        //String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/verySmallG.txt";//Mac //tinyPathG,teenyWeenyG,tinyG,mediumG,verySmallG
 
         In in = new In(pathName);
         Graph G = new Graph(in);
