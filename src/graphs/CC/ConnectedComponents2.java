@@ -7,14 +7,14 @@ import java.io.FileNotFoundException;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class ConnectedComponents {
+public class ConnectedComponents2 {
     public boolean[] marked;
     public int[] pathTo;
     public int s;
     public int[] id;
     int idCounter = 0;
 
-    public ConnectedComponents(Graph G, int s){
+    public ConnectedComponents2(Graph G, int s){
         marked = new boolean[G.V()];
         pathTo = new int[G.V()];
         this.s = s;
@@ -53,14 +53,14 @@ public class ConnectedComponents {
     }
     
     public static void main(String[] args) throws FileNotFoundException {
-        String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\twoGraphsG.txt";//Mac //twoGraphsG,teenyWeenyG,tinyG,mediumG,verySmallG
-        //String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/verySmallG.txt";//Mac //teenyWeenyG,tinyG,mediumG,verySmallG
+        //String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\twoGraphsG.txt";//Mac //twoGraphsG,teenyWeenyG,tinyG,mediumG,verySmallG
+        String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/twoGraphsG.txt";//Mac //teenyWeenyG,tinyG,mediumG,verySmallG
         In in = new In(pathName);
         Graph G = new Graph(in);
         int s = 0;
-        ConnectedComponents cc = new ConnectedComponents(G,s);
+        ConnectedComponents2 cc = new ConnectedComponents2(G,s);
 //        cc.id
-        for (int num :cc.id) {
+        for (int num : cc.id) {
             System.out.print(num + " ");
         }
 
