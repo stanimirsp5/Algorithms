@@ -67,7 +67,7 @@ public class Graph {
         return 2.0 * G.E() / G.V();
     }
 
-     public static int selfLoop(Graph G){
+     public int selfLoop(Graph G){ // 1-1 is a self loop
         int count = 0;
         for (int v = 0; v < G.V(); v++) {
             for (int w: G.adj(v)) {
@@ -90,7 +90,7 @@ public class Graph {
         Graph g = new Graph(in);
         //System.out.println("dg "+degree(g,g.V));
         //System.out.println("av dg "+averageDegree(g));
-        System.out.println("self loops  "+selfLoop(g));
+       // System.out.println("self loops  "+selfLoop(g));
       //  g.printG();
     }
 }
