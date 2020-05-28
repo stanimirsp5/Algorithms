@@ -27,7 +27,7 @@ public class CC {
         marked[v] = true;
         id[v] = count;
         for (int w : G.adj(v)) {
-            if(!marked[v]){
+            if(!marked[w]){
                dfs(G,w);
             }
         }
@@ -46,8 +46,8 @@ public class CC {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\twoGraphsG.txt";//Mac //twoGraphsG,teenyWeenyG,tinyG,mediumG,verySmallG
-        //String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/twoGraphsG.txt";//Mac //teenyWeenyG,tinyG,mediumG,verySmallG
+        //String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\twoGraphsG.txt";//Mac //twoGraphsG,teenyWeenyG,tinyG,mediumG,verySmallG
+        String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/twoGraphsG.txt";//Mac //teenyWeenyG,tinyG,mediumG,verySmallG
         In in = new In(pathName);
         Graph G = new Graph(in);
         CC cc = new CC(G);
@@ -61,7 +61,7 @@ public class CC {
             components[i] = new LinkedList<Integer>();
         }
         for (int v = 0; v < G.V(); v++) {
-            components[cc.id(v)].remove(v);
+            components[cc.id(v)].add(v);
         }
         for (int i = 0; i < n; i++) {
             for (int v : components[i]) {

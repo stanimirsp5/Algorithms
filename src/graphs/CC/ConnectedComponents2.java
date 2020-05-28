@@ -6,6 +6,8 @@ import graphs.In;
 import java.io.FileNotFoundException;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class ConnectedComponents2 {
     public boolean[] marked;
@@ -59,21 +61,22 @@ public class ConnectedComponents2 {
         Graph G = new Graph(in);
         int s = 0;
         ConnectedComponents2 cc = new ConnectedComponents2(G,s);
-//        cc.id
-        for (int num : cc.id) {
-            System.out.print(num + " ");
-        }
 
-//        for (int w = 0; w < G.V(); w++) {
-//            System.out.print("from " +s+ " to "+w+": ") ;
-//            Deque<Integer> paths = cc.getPathTo(w);
-//           if(cc.hasPathTo(w)) {
-//               for (int v : paths) {
-//                   if (v == s) System.out.print(v);
-//                   else System.out.print("-" + v);
-//               }
-//           }
-//            System.out.println();
-//        }
+        int n = cc.idCounter;
+        System.out.println(n+ " components");
+
+        Queue<Integer>[] components = new Queue[n];
+        for (int i = 0; i < n; i++) {
+            components[i] = new LinkedList<>();
+        }
+        for (int i = 0; i < G.V(); i++) {
+            components[cc.id[i]].add(i);
+        }
+        for (int i = 0; i < n; i++) {
+            for (int c: components[i]) {
+                System.out.print(c +" ");
+            }
+            System.out.println();
+        }
     }
 }
