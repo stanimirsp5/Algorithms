@@ -42,19 +42,19 @@ public class DirectedDFS {
 //        In in = new In(pathName);
 //        Digraph G = new Digraph(in);
 
-        Digraph G = new Digraph(new In(args[0]));
+        //Digraph G = new Digraph(new In(args[0]));
         Bag<Integer> sources = new Bag<Integer>();
         for (int i = 1; i < args.length; i++) {
             sources.add(Integer.parseInt(args[i]));
         }
 
-        DirectedDFS reachable = new DirectedDFS(G,sources);
-        for (int v = 0; v < G.V(); v++) {
-            if(reachable.marked(v)){
-                System.out.println(v + " ");
-            }
-
-        }
+//        DirectedDFS reachable = new DirectedDFS(G,sources);
+//        for (int v = 0; v < G.V(); v++) {
+//            if(reachable.marked(v)){
+//                System.out.println(v + " ");
+//            }
+//
+//        }
         System.out.println();
 
 

@@ -14,7 +14,6 @@ public class Cycle2 {
 
         for (int s = 0; s < G.V(); s++) {
             if (!marked[s]) {
-
                 dfs(G, s, -1);
             }
         }
