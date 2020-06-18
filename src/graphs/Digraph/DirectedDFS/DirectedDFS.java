@@ -37,24 +37,28 @@ public class DirectedDFS {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-//        String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\twoGraphsG.txt";//PC //teenyWeenyG,tinyG,mediumG,tinyPathG,verySmallG
-//        //String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/verySmallG.txt";//Mac //teenyWeenyG,tinyG,mediumG,verySmallG
-//        In in = new In(pathName);
-//        Digraph G = new Digraph(in);
+        String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\twoGraphsG.txt";//PC //teenyWeenyG,tinyG,mediumG,tinyPathG,verySmallG
+        // String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/verySmallG.txt";//Mac //teenyWeenyG,tinyG,mediumG,verySmallG
+        // Digraph G = new Digraph(in);
 
-        //Digraph G = new Digraph(new In(args[0]));
+        // javac scratches.java - compile code
+        // java scratches -f file.txt pass arguments
+        In in = new In(pathName);
+        Digraph G = new Digraph(in);
+
         Bag<Integer> sources = new Bag<Integer>();
         for (int i = 1; i < args.length; i++) {
             sources.add(Integer.parseInt(args[i]));
         }
 
-//        DirectedDFS reachable = new DirectedDFS(G,sources);
-//        for (int v = 0; v < G.V(); v++) {
-//            if(reachable.marked(v)){
-//                System.out.println(v + " ");
-//            }
-//
-//        }
+
+        DirectedDFS reachable = new DirectedDFS(G,sources);
+        for (int v = 0; v < G.V(); v++) {
+            if(reachable.marked(v)){
+                System.out.println(v + " ");
+            }
+
+        }
         System.out.println();
 
 

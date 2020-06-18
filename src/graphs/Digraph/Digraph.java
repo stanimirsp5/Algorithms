@@ -1,5 +1,6 @@
 package graphs.Digraph;
 
+import graphs.In;
 import simpleDS.Bag;
 
 public class Digraph {
@@ -13,6 +14,17 @@ public class Digraph {
         adj = new Bag[V];
         for (int v = 0; v < V; v++) {
             adj[v] = new Bag<Integer>();
+        }
+    }
+
+    public Digraph(In in){
+        this(in.readInt()); // read V and construct this graph
+        int E = in.readInt();
+        for (int i = 0; i < E; i++) {
+            // Add an edge
+            int v = in.readInt(); // Read vertex
+            int w = in.readInt(); // Read another vertex
+            addEdge(v,w); // add edge connecting them
         }
     }
 
