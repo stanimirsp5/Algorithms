@@ -55,4 +55,11 @@ public class Digraph {
         return R;
     }
 
+    public void print(){
+        for (int i = 0; i < adj.length; i++) {
+            System.out.println("vertex " + i + " edges: " );
+            adj[i].print();
+        }
+
+    }
 }

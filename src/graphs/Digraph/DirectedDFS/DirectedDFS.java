@@ -6,7 +6,7 @@ import graphs.In;
 import simpleDS.Bag;
 
 import java.io.FileNotFoundException;
-
+// Test which vertices are reachable from a given vertex or a given set of vertices
 public class DirectedDFS {
     private boolean[] marked;
 
@@ -26,7 +26,7 @@ public class DirectedDFS {
     private void dfs(Digraph G,int v){
         marked[v] = true;
         for (int w : G.adj(v) ) {
-            if (!marked(v)){
+            if (!marked(w)){
                 dfs(G,w);
             }
         }
@@ -37,7 +37,7 @@ public class DirectedDFS {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\twoGraphsG.txt";//PC //teenyWeenyG,tinyG,mediumG,tinyPathG,verySmallG
+        String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\diG\\shortDG.txt";//PC //teenyWeenyG,tinyG,mediumG,tinyPathG,verySmallG,twoGraphsG
         // String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/verySmallG.txt";//Mac //teenyWeenyG,tinyG,mediumG,verySmallG
         // Digraph G = new Digraph(in);
 
@@ -45,14 +45,15 @@ public class DirectedDFS {
         // java scratches -f file.txt pass arguments
         In in = new In(pathName);
         Digraph G = new Digraph(in);
-
-        Bag<Integer> sources = new Bag<Integer>();
-        for (int i = 1; i < args.length; i++) {
-            sources.add(Integer.parseInt(args[i]));
-        }
-
-
-        DirectedDFS reachable = new DirectedDFS(G,sources);
+        //G.print();
+//        Bag<Integer> sources = new Bag<Integer>();
+//        for (int i = 1; i < args.length; i++) {
+//            sources.add(Integer.parseInt(args[i]));
+//        }
+//
+//
+        //DirectedDFS reachable = new DirectedDFS(G,sources);
+        DirectedDFS reachable = new DirectedDFS(G,3);
         for (int v = 0; v < G.V(); v++) {
             if(reachable.marked(v)){
                 System.out.println(v + " ");

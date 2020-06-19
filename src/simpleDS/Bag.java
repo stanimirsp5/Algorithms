@@ -30,6 +30,10 @@ public class Bag<Item> implements Iterable<Item>{
     public void print(){
         Node node = first;
         while (true){
+            if(node == null) {
+                System.out.println("-");
+                break;
+            }
             System.out.println(node.item);
             if(!hasNext(node)){
                 break;
