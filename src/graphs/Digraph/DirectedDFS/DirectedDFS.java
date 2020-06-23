@@ -46,23 +46,35 @@ public class DirectedDFS {
         In in = new In(pathName);
         Digraph G = new Digraph(in);
         //G.print();
-//        Bag<Integer> sources = new Bag<Integer>();
-//        for (int i = 1; i < args.length; i++) {
-//            sources.add(Integer.parseInt(args[i]));
+        Bag<Integer> sources = new Bag<Integer>();
+//        while(true){
+//            System.out.println(in.readInt());
+//            if(in.readInt() == 5){
+//                break;
+//            }
+//            sources.add(in.readInt());
+//
 //        }
+        In in2 = new In(pathName);
+        in2.readInt();
+        in2.readInt();
+        for (int i = 1; i < 5; i++) {
+//            System.out.println(in2.readInt());
+            sources.add(in2.readInt());
+//            sources.add(in.readInt());
+        }
 //
 //
-        //DirectedDFS reachable = new DirectedDFS(G,sources);
-        DirectedDFS reachable = new DirectedDFS(G,3);
+//        DirectedDFS reachable = new DirectedDFS(G,sources); //is there a directed path from any vertex in the set to v
+        int s = 3;
+        DirectedDFS reachable = new DirectedDFS(G,s); //  is there a directed path from s to v
         for (int v = 0; v < G.V(); v++) {
+            //if(s == v) continue;
             if(reachable.marked(v)){
                 System.out.println(v + " ");
             }
 
         }
         System.out.println();
-
-
     }
-
 }
