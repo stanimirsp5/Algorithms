@@ -52,7 +52,7 @@ public class DirectedPath { //  is there a directed path from s to v
         In in = new In(pathName);
 
         Digraph2 G = new Digraph2(in);
-        int s = 5;
+        int s = 0;
         DirectedPath dfs = new DirectedPath(G,s);
         System.out.println();
         for (int v = 0; v < G.V(); v++) {
