@@ -27,7 +27,7 @@ public class BreadthFirstPaths {
             for (int w : G.adj(v)) {
                 if(!marked[w]){
                     edgeTo[w] = v; // save last edge of a shortest path
-                    marked[w] = true; // mark it becaoue path is known
+                    marked[w] = true; // mark it because path is known
                     queue.add(w);// and add it to the queue
                 }
             }
@@ -52,13 +52,13 @@ public class BreadthFirstPaths {
         return path;
 
     }
-static int getResult(boolean... vars) {
-    int count = 0;
-    for (boolean var : vars) {
-        count += (var ? 1 : 0);
+    static int getResult(boolean... vars) {
+        int count = 0;
+        for (boolean var : vars) {
+            count += (var ? 1 : 0);
+        }
+        return count;
     }
-    return count;
-}
     public static void main(String[] args) throws FileNotFoundException {
         String pathName = "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\twoGraphsG.txt";//Mac //twoGraphsG,teenyWeenyG,tinyG,mediumG,verySmallG
         //String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/twoGraphsG.txt";//Mac //twoGraphsG,teenyWeenyG,tinyG,mediumG,verySmallG

@@ -48,7 +48,7 @@ public class DirectedPath { //  is there a directed path from s to v
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        String pathName=  "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\diG\\middleDG.txt";//PC middleDG,shortDG//teenyWeenyG,tinyG,mediumG,tinyPathG,verySmallG,twoGraphsG
+        String pathName=  "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\diG\\directedPath.txt";//PC directedPath,middleDG,shortDG//teenyWeenyG,tinyG,mediumG,tinyPathG,verySmallG,twoGraphsG
         In in = new In(pathName);
 
         Digraph2 G = new Digraph2(in);

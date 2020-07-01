@@ -42,14 +42,14 @@ public class DirectedPath2 { // is there path from s to v, if so print it
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        String pathName=  "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\diG\\shortDG.txt";//PC middleDG,shortDG//teenyWeenyG,tinyG,mediumG,tinyPathG,verySmallG,twoGraphsG
+        String pathName=  "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\diG\\directedPath.txt";//PC directedPath,middleDG,shortDG//teenyWeenyG,tinyG,mediumG,tinyPathG,verySmallG,twoGraphsG
         In in = new In(pathName);
         Digraph2 G = new Digraph2(in);
-        int s = 4;
+        int s = 0;
         DirectedPath2 paths = new DirectedPath2(G,s);
         System.out.println(s);
 
-        for (int w :  paths.getPaths(3)) {
+        for (int w :  paths.getPaths(6)) {
             System.out.println(w);
         }
     }
