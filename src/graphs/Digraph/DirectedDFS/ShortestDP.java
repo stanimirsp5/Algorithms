@@ -33,9 +33,9 @@ public class ShortestDP { // is there directed path from s to v, if so find a sh
                 if(!marked[w]){
                     breath.add(w);
                     edgeTo[w] = num;
+                    marked[num]= true;
                 }
             }
-            marked[num]= true;
 
         }
     }
@@ -43,11 +43,11 @@ public class ShortestDP { // is there directed path from s to v, if so find a sh
     public Deque<Integer> shortestPath(int v){
 
         Deque<Integer> paths = new LinkedList<>();
-        paths.add(v);
 
-        for (int i = v; i < startV ; i = edgeTo[v]) {
+        for (int i = v; i != startV ; i = edgeTo[i]) {
             paths.add(i);
         }
+        paths.add(startV);
 
         return paths;
     }
