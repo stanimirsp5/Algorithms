@@ -33,7 +33,7 @@ public class ShortestDP { // is there directed path from s to v, if so find a sh
                 if(!marked[w]){
                     breath.add(w);
                     edgeTo[w] = num;
-                    marked[num]= true;
+                    marked[w]= true;
                 }
             }
 
