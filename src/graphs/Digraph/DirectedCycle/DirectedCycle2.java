@@ -6,6 +6,7 @@ import graphs.In;
 
 import java.io.FileNotFoundException;
 import java.util.Deque;
+import java.util.LinkedList;
 
 public class DirectedCycle2 {
 
@@ -26,43 +27,43 @@ public class DirectedCycle2 {
         }
     }
 
-    private Deque<Integer> dfs(Digraph2 G, int v){
+    private void dfs(Digraph2 G, int v){
         marked[v] = true;
         onStack[v] = true;
 
         for (int w : G.adj(v) ) {
 
             if(hasCycle()){
-                return cycle;
+                return;
             }else if(!marked[w]){
                 pathTo[w] = v;
                 dfs(G,w);
             }else if(onStack[w]){
-
-                for (int i = v; i != w ; i = pathTo[w]) {
+                cycle = new LinkedList<>();
+                for (int i = v; i != w ; i = pathTo[i]) {
                     cycle.push(i);
                 }
                 cycle.push(w);
                 cycle.push(v);
-
             }
-
-
         }
         onStack[v] = false;
-        return cycle;
     }
 
     public boolean hasCycle(){
         return cycle != null;
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
-        String pathName=  "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\diG\\shortDG.txt";//PC tinyDG,directedPath,middleDG,shortDG//teenyWeenyG,tinyG,mediumG,tinyPathG,verySmallG,twoGraphsG
-        In in = new In(pathName);
-        Digraph G = new Digraph(in);
+    public Iterable<Integer> cycle(){
+        return cycle;
+    }
 
-        DirectedCycle directedCycle = new DirectedCycle(G);
+    public static void main(String[] args) throws FileNotFoundException {
+        String pathName=  "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\diG\\tinyDG.txt";//PC tinyDG,directedPath,middleDG,shortDG//teenyWeenyG,tinyG,mediumG,tinyPathG,verySmallG,twoGraphsG
+        In in = new In(pathName);
+        Digraph2 G = new Digraph2(in);
+
+        DirectedCycle2 directedCycle = new DirectedCycle2(G);
 
         //directedCycle.dfs(G,v);
         System.out.println("Has cycle ");
