@@ -2,72 +2,66 @@ package graphs.Digraph.DirectedCycle;
 
 import graphs.Digraph.Digraph;
 import graphs.Digraph.Digraph2;
-import graphs.Digraph.DirectedDFS.ShortestDP;
 import graphs.In;
 
 import java.io.FileNotFoundException;
 import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Stack;
 
-public class DirectedCycle {
+public class DirectedCycle2 {
+
     private boolean[] marked;
-    private int[] edgeTo;
-    private Deque<Integer> cycle;   // vertices on a cycle (if one exists)
-    private boolean[] onStack;      // vertices on function-call stack
+    private boolean[] onStack;
+    private int[] pathTo;
+    private Deque<Integer> cycle;
 
-    public DirectedCycle(Digraph G){
-        onStack = new boolean[G.V()];
-        edgeTo = new int[G.V()];
+    public DirectedCycle2(Digraph2 G){
+        pathTo = new int[G.V()];
         marked = new boolean[G.V()];
+        onStack = new boolean[G.V()];
 
-        for (int v = 0; v < G.V(); v++) {
-
-
-            if(!marked[v]){
-                dfs(G,v);
-
+        for (int i = 0; i < G.V(); i++) {
+            if(!marked[i]){
+                dfs(G,i);
             }
         }
     }
 
-    private void dfs(Digraph G, int v){
-        onStack[v] = true;
+    private Deque<Integer> dfs(Digraph2 G, int v){
         marked[v] = true;
-        for (int w: G.adj(v)) {
-            if(this.hasCycle()){
-                return;
-            }
-            else if(!marked[w]){
-                edgeTo[w] = v;
+        onStack[v] = true;
+
+        for (int w : G.adj(v) ) {
+
+            if(hasCycle()){
+                return cycle;
+            }else if(!marked[w]){
+                pathTo[w] = v;
                 dfs(G,w);
             }else if(onStack[w]){
-                cycle = new LinkedList<>();
-                for (int x = v; x != w ; x = edgeTo[x]) {
-                    cycle.push(x);
-                }
 
+                for (int i = v; i != w ; i = pathTo[w]) {
+                    cycle.push(i);
+                }
                 cycle.push(w);
                 cycle.push(v);
+
             }
+
+
         }
         onStack[v] = false;
+        return cycle;
     }
 
     public boolean hasCycle(){
         return cycle != null;
     }
 
-    public Iterable<Integer> cycle(){
-        return cycle;
-    }
-
     public static void main(String[] args) throws FileNotFoundException {
         String pathName=  "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\diG\\shortDG.txt";//PC tinyDG,directedPath,middleDG,shortDG//teenyWeenyG,tinyG,mediumG,tinyPathG,verySmallG,twoGraphsG
         In in = new In(pathName);
         Digraph G = new Digraph(in);
-        int s = 1;
-        int v = 1;
+
         DirectedCycle directedCycle = new DirectedCycle(G);
 
         //directedCycle.dfs(G,v);
