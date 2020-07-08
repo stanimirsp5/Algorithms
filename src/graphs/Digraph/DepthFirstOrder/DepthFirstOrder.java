@@ -29,34 +29,19 @@ public class DepthFirstOrder {
         }
     }
 
-//    private void dfs(Digraph G, int v){
-//        marked[v] = true;
-//        pre.add(v);
-//
-//        for (int w: G.adj(v)) {
-//
-//            if(!marked[w]){
-//                dfs(G,w);
-//
-//            }
-//        }
-//
-//        post.add(v);
-//        reversePost.push(v);
-//    }
-
     private void dfs(Digraph G, int v){
         marked[v] = true;
+        pre.add(v);
 
         for (int w: G.adj(v)) {
 
             if(!marked[w]){
-                pre.add(w);
                 dfs(G,w);
-                post.add(w);
-                reversePost.push(w);
+
             }
         }
+        post.add(v);
+        reversePost.push(v);
     }
 
     public Iterable<Integer> preorder(){
@@ -72,13 +57,13 @@ public class DepthFirstOrder {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        String pathName=  "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\diG\\tinyDG.txt";//PC tinyDG,directedPath,middleDG,shortDG//teenyWeenyG,tinyG,mediumG,tinyPathG,verySmallG,twoGraphsG
+        String pathName=  "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\diG\\shortDG.txt";//PC tinyDG,directedPath,middleDG,shortDG//teenyWeenyG,tinyG,mediumG,tinyPathG,verySmallG,twoGraphsG
         In in = new In(pathName);
         Digraph G = new Digraph(in);
 
         DepthFirstOrder dfo = new DepthFirstOrder(G);
 
-        for (int w:dfo.preorder()) {
+        for (int w:dfo.reversePostorder()) {
             System.out.println(w);
         }
 
