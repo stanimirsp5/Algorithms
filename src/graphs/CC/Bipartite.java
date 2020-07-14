@@ -4,7 +4,8 @@ import graphs.Graph;
 import graphs.In;
 
 import java.io.FileNotFoundException;
-
+// bipartite is graph whose vertices can be divided into two disjoint and independent sets
+// vertices in first set aren't connected between each other, but only with the vertices in second set
 public class Bipartite {
     private boolean[] marked;
     private boolean[] color;
