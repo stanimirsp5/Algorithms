@@ -27,7 +27,9 @@ public class Topological {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        String pathName=  "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\diG\\shortDG.txt";//PC tinyDG,directedPath,middleDG,shortDG//teenyWeenyG,tinyG,mediumG,tinyPathG,verySmallG,twoGraphsG
+        //String pathName=  "C:\\Users\\stanimir.petrov\\Google Drive\\Algorithms\\Java\\src\\sources\\diG\\shortDG.txt";//PC tinyDG,directedPath,middleDG,shortDG//teenyWeenyG,tinyG,mediumG,tinyPathG,verySmallG,twoGraphsG
+        String pathName = "/Users/stanimir/Projects/Algorithms/src/sources/tinyPathG.txt";//Mac //tinyPathG,twoGraphsG,teenyWeenyG,tinyG,mediumG,verySmallG
+
         In in = new In(pathName);
         Digraph G = new Digraph(in);
         Topological top = new Topological(G);
