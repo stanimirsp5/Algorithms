@@ -1,0 +1,4 @@
+https://docs.oracle.com/javase/tutorial/2d/basic2d/index.html - Java 2d doc
+https://mkyong.com/swing/java-swing-draw-shapes-dynamically-example/ - draw stars
+https://stackoverflow.com/questions/10628492/dynamic-graphics-object-painting - MyCanvas impl
+https://www.youtube.com/watch?v=SrfxWxiddtY - draw nodes and links dynamically
